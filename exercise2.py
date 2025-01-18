@@ -14,18 +14,15 @@ P = [P1, P5, P6, P4, P2, P3]
 # Create the polygon
 polygon = Polygon(P)
 
-# Generate grid points to approximate points inside the polygon
 min_x, min_y, max_x, max_y = polygon.bounds
 x = np.linspace(min_x, max_x, 100)
 y = np.linspace(min_y, max_y, 100)
 xx, yy = np.meshgrid(x, y)
 grid_points = np.c_[xx.ravel(), yy.ravel()]
 inside_points = [Point(p).coords[0] for p in grid_points if polygon.contains(Point(p))]
-
-# Create the subplots
 fig, axs = plt.subplots(1, 2, figsize=(14, 7))
 
-# Plot for case (a) - Single Camera
+# Plot for subpoint a)
 axs[0].plot(*polygon.exterior.xy, label="Polygon", color="black")
 camera_position = (0, -1)
 lines = [[camera_position, point] for point in inside_points]
@@ -40,7 +37,7 @@ axs[0].grid(True)
 axs[0].axis("equal")
 axs[0].legend()
 
-# Plot for case (b) - Two Cameras
+# Plot for subpoint b)
 axs[1].plot(*polygon.exterior.xy, label="Polygon", color="black")
 camera_positions = [(0, 4.3), (1.8, -1)]
 colors = ["green", "blue"]

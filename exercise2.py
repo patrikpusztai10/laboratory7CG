@@ -11,7 +11,6 @@ P5 = (1, 2)
 P6 = (3, 2)
 P = [P1, P5, P6, P4, P2, P3]
 
-# Create the polygon
 polygon = Polygon(P)
 
 min_x, min_y, max_x, max_y = polygon.bounds
